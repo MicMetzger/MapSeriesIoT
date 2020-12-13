@@ -3,7 +3,11 @@ body {
     background: #222;
     color: #FFF;
     font-family: sans-serif;
+    /*
     min-width: 1200px;
+    */
+    width: calc(100% - 1em);
+    height: calc(100% - 1em) !important;
 }
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
@@ -14,6 +18,15 @@ h1, h2, h3, h4, h5, h6 {
     width: 98%;
     height: 100vh;
 }
+
+#gal_wrapper {
+    background: #333;
+    bottom: 0;
+    margin: 0 auto;
+    width: 98%;
+    height: 500vh;
+}
+
 header {
     margin: 0 auto;
     width: 99%;
@@ -59,18 +72,20 @@ nav ul li:hover ul {
     display: block;
     width: fit-content;
     margin: 15px 0 0 -55px;
+    z-index: 1;
+
 }
 nav ul li ul li {
     display: block;
-    padding: 12px 15px;
+    padding: 12px 15px 12px;
     width: 120px;
     text-align: left;
 }
 main {
-    margin: 0 auto;
-    width: 99%;
+    margin: 13px auto 0 !important;
+    width: 99% !important;
     height: 500px;
-    background: #282828;
+    background: #282828 ;
     padding: 20px 0;
 }
 .titlebar {
@@ -86,9 +101,10 @@ main {
 }
 .titlebar span {
     float: right;
-    padding: 5px 10px;
+    padding: 0 10px;
     font-size: 20px;
 }
+
 #info {
     padding: 50px;
     text-align: center;
@@ -133,4 +149,7 @@ a:hover {
 /* selected link */
 a:active {
     color: blue;
+}
+
+main {
 }

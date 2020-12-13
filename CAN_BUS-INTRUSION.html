@@ -1,0 +1,360 @@
+<!--suppress JSUnresolvedVariable -->
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charSet="utf-8"/>
+    <meta
+            name="viewport"
+            content="initial-scale=1, maximum-scale=1,user-scalable=no"
+    />
+
+    <!--
+  Maps using the example provided by ArcGIS API for JavaScript, https://js.arcgis.com
+  -->
+    <title>
+        CAN Intrusion
+    </title>
+
+    <!-- Load the Chart.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.17/esri/themes/light/main.css"/>
+
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        #title {
+            padding: 15px;
+            background-color: #2d3339;
+            height: 500px;
+        }
+
+        #viewDiv {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+        }
+
+        #panel {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 48%;
+            width: 30%;
+            overflow: scroll;
+            background-color: white;
+        }
+
+        #main-focus {
+            color: #ed5050;
+            font-size: 36pt;
+            font-weight: bolder;
+            line-height: 0.8;
+        }
+
+        .sub-focus {
+            color: #c3cf14;
+            font-size: 17pt;
+            font-weight: bolder;
+        }
+
+        .mini-title {
+            color: #149dcf;
+            font-size: 10pt;
+            font-weight: bolder;
+        }
+
+        #overviewDiv {
+            position: absolute;
+            right: 6px;
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            overflow: hidden;
+        }
+
+        #title-text {
+            color: #ed5050;
+            font-size: 36pt;
+            font-weight: bolder;
+            line-height: 0.8;
+        }
+
+        #title-text-sub {
+            color: #c3cf14;
+            font-size: 17pt;
+            font-weight: bolder;
+        }
+
+        #title-text-dat {
+            color: #abdeff;
+
+        }
+        #title-text-dat p {
+            padding: 3px;
+            font-size: 10pt;
+        }
+    </style>
+
+    <script src="https://js.arcgis.com/4.17/"></script>
+
+    <script>
+        require([
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/WebMap",
+            "esri/layers/FeatureLayer",
+            "esri/widgets/Legend",
+            "esri/widgets/Expand",
+            "esri/widgets/Compass",
+            "esri/widgets/ScaleBar"
+        ], function (
+            Map,
+            MapView,
+            WebMap,
+            FeatureLayer,
+            Legend,
+            Expand,
+            Compass,
+            ScaleBar
+        ) {
+
+            const featureLayer = new FeatureLayer({
+                portalItem: {
+                    id: "319ac68be17b4e0696113a47d76a78aa"
+                }
+            });
+
+            const webmap = new WebMap({
+                portalItem: {
+                    id: "472e736fcd984cf6bd00e942e14a5b5d"
+                },
+            });
+
+            var overviewMap = new Map({
+                basemap: "topo-vector",
+                layer: [featureLayer]
+            });
+
+            const view = new MapView({
+                map: webmap,
+                container: "viewDiv",
+                zoom: 13,
+                constraints: {
+                    minScale: 53000000
+                }
+            });
+
+            var compass = new Compass({
+                view: view
+            });
+
+            var scaleBar = new ScaleBar({
+                view: view,
+                unit: "dual" // The scale bar displays both metric and non-metric units.
+            });
+
+            var mapView = new MapView({
+                container: "overviewDiv",
+                center: [116.4, 39.93],
+                zoom: 5,
+                map: overviewMap,
+                constraints: {
+                    rotationEnabled: false
+                }
+            });
+            mapView.ui.components = [];
+            view.ui.add("overviewDiv", "bottom-right");
+
+            function setup() {
+                const extent3Dgraphic = new Graphic({
+                    geometry: null,
+                    symbol: {
+                        type: "simple-fill",
+                        color: [0, 0, 0, 0.5],
+                        outline: null
+                    }
+                });
+                mapView.graphics.add(extent3Dgraphic);
+
+                watchUtils.init(mainView, "extent", function (extent) {
+                    if (mainView.stationary) {
+                        mapView
+                            .goTo({
+                                center: mainView.center,
+                                scale:
+                                    mainView.scale *
+                                    2 *
+                                    Math.max(
+                                        mainView.width / mapView.width,
+                                        mainView.height / mapView.height
+                                    )
+                            })
+                            .catch(function (error) {
+                                if (error.name !== "view:goto-interrupted") {
+                                    console.error(error);
+                                }
+                            });
+                    }
+                });
+            };
+
+            const titleContent = document.createElement("div");
+            titleContent.style.padding = "15px";
+            titleContent.style.backgroundColor = "#2d3339";
+            titleContent.style.width = "650px";
+            titleContent.style.height = "400px";
+            titleContent.style.overflow = "hidden";
+            titleContent.style.marginBottom = "20px";
+            titleContent.style.fontSize = "14px";
+            titleContent.style.overflowY = "scroll";
+            titleContent.style.borderRadius = "5px";
+            titleContent.style.fontFamily = "monoco,courier,monospace,Helvetica Neue,Helvetica,sans-serif";
+            titleContent.innerHTML = [
+                "<div id='title' class='esri-widget'>",
+                "<span id='title-text'>CAR HACKING</span>" +
+                "<br>" +
+                "<span id='title-text-sub'>Automotive Controller Area Network (CAN)</span>",
+                "<span id='title-text-dat'>" +
+                "<p>The points displayed on this map represent every stop of a single taxicab operating in Beijing, China. " +
+                "The GPS coordinates of the cab was acquired by a team of Beijing university researchers, through the process of " +
+                "penetrating the minimal security protecting the car’s CAN Bus (The central nervous system of most modern cars)</p>" +
+                "</span>",
+                "<br>",
+                "<iframe width='550' height='315' src='https://www.youtube.com/embed/MK0SrxBC1xs' frameBorder=0; allow=accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowFullScreen></iframe>",
+                "</div>"
+            ].join(" ");
+
+            /*const scrollButton = document.createElement("button");
+            scrollButton.style.width = "450px";
+            scrollButton.style.padding = "15px";
+            scrollButton.style.backgroundColor = "#7b0ac2";
+            scrollButton.style.overflow = "hidden";
+            scrollButton.style.fontSize = "12px";
+            scrollButton.style.borderRadius = "10px";*/
+
+
+            const titleExpand = new Expand({
+                expandIconClass: "esri-icon-dashboard",
+                expandTooltip: "Summary stats",
+                view: view,
+                content: titleContent,
+                expanded: view.widthBreakpoint !== "xsmall"
+            });
+            view.ui.add(titleExpand, "top-right");
+
+            const legendExpand = new Expand({
+                view: view,
+                content: new Legend({
+                    view: view
+                }),
+                expanded: view.widthBreakpoint !== "xsmall"
+            });
+
+            view.ui.add(legendExpand, "bottom-left");
+            view.ui.add(scaleBar, {position: "top-left"});
+            view.ui.add(compass, {position: "top-left"});
+
+
+            view.watch("widthBreakpoint", function (newValue) {
+                titleExpand.expanded = newValue !== "xsmall";
+                legendExpand.expanded = newValue !== "xsmall";
+            });
+
+            /*DISABLED NAV AND EXTENT FOR A FIXED PRESENTATION*/
+            view.when(maintainFixedExtent);
+            mapView.when(disableNavigation).then(disablePopupOnClick);
+
+            function maintainFixedExtent(view) {
+                var fixedExtent = view.extent.clone();
+                // keep a fixed extent in the view
+                // when the view size changes
+                view.on("resize", function () {
+                    view.extent = fixedExtent;
+                });
+                return view;
+            }
+
+            // disables all navigation in the view
+            function disableNavigation(view) {
+                view.popup.dockEnabled = true;
+
+                // Removes the zoom action on the popup
+                view.popup.actions = [];
+
+                // stops propagation of default behavior when an event fires
+                function stopEvtPropagation(event) {
+                    event.stopPropagation();
+                }
+
+                // disable mouse wheel scroll zooming on the view
+                view.navigation.mouseWheelZoomEnabled = false;
+
+                // disable zooming via double-click on the view
+                view.on("double-click", stopEvtPropagation);
+
+                // disable zooming out via double-click + Control on the view
+                view.on("double-click", ["Control"], stopEvtPropagation);
+
+                // disables pinch-zoom and panning on the view
+                view.navigation.browserTouchPanEnabled = false;
+                view.on("drag", stopEvtPropagation);
+
+                // disable the view's zoom box to prevent the Shift + drag
+                // and Shift + Control + drag zoom gestures.
+                view.on("drag", ["Shift"], stopEvtPropagation);
+                view.on("drag", ["Shift", "Control"], stopEvtPropagation);
+
+                // prevents zooming and rotation with the indicated keys
+                view.on("key-down", function (event) {
+                    var prohibitedKeys = ["+", "-", "_", "=", "a", "d"];
+                    var keyPressed = event.key.toLowerCase();
+                    if (prohibitedKeys.indexOf(keyPressed) !== -1) {
+                        event.stopPropagation();
+                    }
+                });
+                return view;
+            }
+
+            // prevents the user from opening the popup with click
+            function disablePopupOnClick(view) {
+                view.on("click", function (event) {
+                    event.stopPropagation();
+                });
+                return view;
+            }
+
+        });
+    </script>
+</head>
+
+<body>
+<div id="viewDiv"></div>
+<div id="overviewDiv"><div id="extentDiv"></div></div>
+<!--<div id="panel">
+    <div style="padding: 15px">
+        <div id='title' class='esri-widget'>
+            <div>
+                <span id='main-focus'></span><span class="sub-focus"></span>
+            </div>
+            <br>
+            <div>
+                <span>
+
+                </span>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>-->
+</body>
+</html>
