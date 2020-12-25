@@ -12,13 +12,15 @@ body {
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
+.info_docs {
+
+}
 #wrapper {
     background: #333;
     margin: 0 auto;
     width: 98%;
     height: 100vh;
 }
-
 #gal_wrapper {
     background: #333;
     bottom: 0;
@@ -26,7 +28,6 @@ h1, h2, h3, h4, h5, h6 {
     width: 98%;
     height: 500vh;
 }
-
 header {
     margin: 0 auto;
     width: 99%;
@@ -82,29 +83,87 @@ nav ul li ul li {
     text-align: left;
 }
 main {
-    margin: 13px auto 0 !important;
+    margin: 8px auto 0 !important;
     width: 99% !important;
     height: 500px;
     background: #282828 ;
     padding: 20px 0;
 }
-.titlebar {
+
+
+/*-----------------------------------------------------------------*/
+.doc-selector-item > .fa{
+    padding-left: 30% !important;
+}
+.fa-angle-double-up {
+    padding-left: 35% !important;
+}
+.fa-angle-down {
+    padding-left: 35% !important;
+}
+
+/*-----------------------------------------------------------------*/
+main .doc-selector-navbar {
+    position: fixed;
+    width: 55px;
+    height: 300px;
+    margin: 8px;
+    padding: 0;
+    border: 2px wheat;
+    border-radius: 8px;
+    background: #b37759;
+}
+
+.doc-selector-item {
+    width: 100%;
+    height: 30px;
+}
+
+#docs-selector {
+    width: 100%;
+    height: 30px;
+    cursor: pointer;
+    float: left;
+    font-size: 25px;
+}
+
+
+.doc-selector-item i {
+    float: left;
+    padding: 5px 10px;
+    font-size: 20px;
+}
+
+.doc-selector-item:active {
     background: #DC4A3D;
     width: 500px;
     height: 30px;
     margin: 0 0 20px 0;
 }
-.titlebar i {
+
+.doc-selector-item:active i {
     float: left;
     padding: 5px 10px;
     font-size: 20px;
 }
-.titlebar span {
+
+.doc-selector-item span {
+    display: none;
     float: right;
     padding: 0 10px;
     font-size: 20px;
 }
 
+.doc-selector-item:hover, .doc-selector-item:active {
+    w3-animate-left: 300px;
+}
+
+div.doc-selector-item__content > .strip__title, .strip__inner-text {
+    display: none;
+}
+
+
+/*------------------------------------------------------------------*/
 #info {
     padding: 50px;
     text-align: center;
@@ -151,5 +210,15 @@ a:active {
     color: blue;
 }
 
-main {
-}
+
+
+
+
+/*--------------------------------------------------------------*/
+
+
+
+
+
+
+
