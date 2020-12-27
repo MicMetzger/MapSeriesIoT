@@ -1,8 +1,6 @@
 <html>
 <head>
     <title>Map Series</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/main2.css" rel="stylesheet" type="text/css"/>
     <link href="scss/mainSass.scss" rel="stylesheet/scss" type="text/css"/>
@@ -28,7 +26,7 @@
             <li><a href="index.html">Home</a></li>
             <li>Portal
             <li>About
-            <li><i class="material-icons" style="font-size: 15px">layers</i> Frames
+            <li><i class="fa fa-bars"></i> Frames
                 <ul>
                     <li><a href="CameraScrape.html" target="_blank">Cameras</a></li>
                     <li><a href="OaklandALPR.html" target="_blank">ALPR</a></li>
@@ -48,30 +46,34 @@
         </ul>
     </nav>
     <main>
-        <div class="doc-selector-navbar">
-            <div id="docs-selector">
-                <i class="fa fa-angle-double-up"></i>
-            </div>
-            <div class="doc-selector-item">
-                <i class="fa fa-area-chart"></i>
-                <span>Statistics</span>
-                <div id="info">
-                    <section class="strips">
-                        <article class="strips__strip">
-                            <div class=".doc-selector-item__content">
-                                <h1 class="strip__title" data-name="Lorem"></h1>
-                                <div class="strip__inner-text">
-                                    <h2>S1</h2>
-                                    <p></p>
-                                </div>
+        <div class="doc-selector-navbar-container">
+            <ul class="doc-selector-navbar">
+                <li class="opener_" id="docs-selector">
+                    <a href="#">
+                        <i class="fa fa-angle-double-up"></i>
+                    </a>
+                </li>
+                <li class="doc-selector-item-switch">
+                    <i class="fa fa-area-chart"></i>
+                    <span>Statistics</span>
 
-                            </div>
-                        </article>
+                </li>
+            </ul>
+        </div>
+        <div id="info">
+            <section class="strips">
+                <article class="strips__strip">
+                    <div class=".doc-selector-item__content">
+                        <h1 class="strip__title" data-name="Lorem"></h1>
+                        <div class="strip__inner-text">
+                            <h2>S1</h2>
+                            <p></p>
+                        </div>
 
-                    </section>
+                    </div>
+                </article>
 
-                </div>
-            </div>
+            </section>
         </div>
     </main>
 </div>

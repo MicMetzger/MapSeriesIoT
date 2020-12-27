@@ -92,9 +92,15 @@ main {
 
 
 /*-----------------------------------------------------------------*/
-.doc-selector-item > .fa{
+.doc-selector-navbar > .fa {
+
     padding-left: 30% !important;
 }
+.doc-selector-item > .fa:active {
+
+}
+
+
 .fa-angle-double-up {
     padding-left: 35% !important;
 }
@@ -103,20 +109,20 @@ main {
 }
 
 /*-----------------------------------------------------------------*/
-main .doc-selector-navbar {
+main .doc-selector-navbar-container {
     position: fixed;
-    width: 55px;
-    height: 300px;
+    width: 350px;
+    height: 400px;
+}
+.doc-selector-navbar-container .doc-selector-navbar {
+    position: fixed;
     margin: 8px;
     padding: 0;
     border: 2px wheat;
     border-radius: 8px;
+    background-size: 55px 300px;
     background: #b37759;
-}
-
-.doc-selector-item {
-    width: 100%;
-    height: 30px;
+    list-style: none;
 }
 
 #docs-selector {
@@ -128,31 +134,45 @@ main .doc-selector-navbar {
 }
 
 
-.doc-selector-item i {
+.doc-selector-item {
+
+}
+
+
+.doc-selector-item-switch {
+    width: 50px;
+    height: 30px;
+}
+
+.doc-selector-item-switch i {
     float: left;
-    padding: 5px 10px;
+    padding: 5px 14px;
+    font-size: 20px;
+}
+.doc-selector-item-switch span {
+    display: none;
+    float: left;
+    padding: 0 10px;
     font-size: 20px;
 }
 
-.doc-selector-item:active {
-    background: #DC4A3D;
-    width: 500px;
+.doc-selector-item-switch:active {
+    display: block;
+    position: fixed;
+    background: #DC4A3D;;
+    border-radius: 8px;
+    width: inherit;
     height: 30px;
     margin: 0 0 20px 0;
 }
 
-.doc-selector-item:active i {
-    float: left;
-    padding: 5px 10px;
-    font-size: 20px;
+.doc-selector-item-switch:not(.active) {
+    /*background: #000000;*/
 }
-
-.doc-selector-item span {
-    display: none;
-    float: right;
-    padding: 0 10px;
-    font-size: 20px;
+.doc-selector-item-switch:active span {
+    display: block;
 }
+.doc-selector-item-switch:active i {}
 
 .doc-selector-item:hover, .doc-selector-item:active {
     w3-animate-left: 300px;
@@ -190,7 +210,6 @@ div.doc-selector-item__content > .strip__title, .strip__inner-text {
     margin: 15px;
 }
 
-/* unvisited link */
 a:link {
     color: red;
 }
@@ -208,7 +227,7 @@ a:hover {
 /* selected link */
 a:active {
     color: blue;
-}
+}+
 
 
 
