@@ -4,18 +4,23 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/main2.css" rel="stylesheet" type="text/css"/>
     <link href="scss/mainSass.scss" rel="stylesheet/scss" type="text/css"/>
-    <script src="javascript/main.js" type="text/javascript"></script>
     <meta content="no-cache" http-equiv="cache-control"/>
     <meta content="no-cache" http-equiv="Pragma"/>
     <meta content="-1" http-equiv="Expires"/>
 </head>
 <body>
+<script type="text/javascript" src="javascript/main.js"></script>
 <!--Template by The_Fiddler-->
 <!--https://codepen.io/The_Fiddler-->
 
 <script>
-    /*call waylay fucntion. waylay for class="dat"*/
-    /*convert class dat to independent IDs*/
+    $('doc-selector-item-switch').click(function(){
+
+        $(this).addClass('active')
+            .siblings()
+            .removeClass('active');
+
+    });
 </script>
 <div id="wrapper">
     <header>
@@ -54,9 +59,28 @@
                     </a>
                 </li>
                 <li class="doc-selector-item-switch">
+                    <a href="#">
                         <i class="fa fa-area-chart"></i>
-                        <span>Statistics</span>
-
+                        <span class="doc-selector-item-switch-title">Statistics</span>
+                    </a>
+                </li>
+                <li class="doc-selector-item-switch">
+                    <a href="#">
+                        <i class="fa fa-area-chart"></i>
+                        <span class="doc-selector-item-switch-title">Statistics</span>
+                    </a>
+                </li>
+                <li class="doc-selector-item-switch">
+                    <a href="#">
+                        <i class="fa fa-area-chart"></i>
+                        <span class="doc-selector-item-switch-title">Statistics</span>
+                    </a>
+                </li>
+                <li class="doc-selector-item-switch">
+                    <a href="#">
+                        <i class="fa fa-area-chart"></i>
+                        <span class="doc-selector-item-switch-title">Statistics</span>
+                    </a>
                 </li>
             </ul>
         </div>

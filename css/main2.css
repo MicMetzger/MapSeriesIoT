@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, h6 {
     background: #333;
     margin: 0 auto;
     width: 98%;
-    height: 100vh;
+    height: 98%;
 }
 #gal_wrapper {
     background: #333;
@@ -85,8 +85,8 @@ nav ul li ul li {
 main {
     margin: 8px auto 0 !important;
     width: 99% !important;
-    height: 500px;
-    background: #282828 ;
+    height: 70%;
+    background: #282828;
     padding: 20px 0;
 }
 
@@ -156,7 +156,7 @@ main .doc-selector-navbar-container {
     font-size: 20px;
 }
 
-.doc-selector-item-switch:active {
+.doc-selector-item-switch .active a {
     display: block;
     position: fixed;
     background: #DC4A3D;;
@@ -167,9 +167,9 @@ main .doc-selector-navbar-container {
 }
 
 .doc-selector-item-switch:not(.active) {
-    /*background: #000000;*/
+    background: none;
 }
-.doc-selector-item-switch:active span {
+.doc-selector-item-switch .active a span {
     display: block;
 }
 .doc-selector-item-switch:active i {}
@@ -210,25 +210,11 @@ div.doc-selector-item__content > .strip__title, .strip__inner-text {
     margin: 15px;
 }
 
-a:link {
-    color: red;
-}
-
-/* visited link */
-a:visited {
-    color: green;
-}
-
-/* mouse over link */
-a:hover {
-    color: black;
-}
-
-/* selected link */
-a:active {
-    color: blue;
-}+
-
+a {color: #ffffff;}         /* Unvisited link  */
+a:visited {color: #ffffff;} /* Visited link    */
+a:hover {color: #030303;}   /* Mouse over link */
+/* a:active {color: #ff0000;}  !* Selected link   *! */
+a:active {color: #030303;}
 
 
 

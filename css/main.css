@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, h6 {
     background: #333;
     margin: 0 auto;
     width: 98%;
-    height: 100vh;
+    height: 98%;
 }
 #gal_wrapper {
     background: #333;
@@ -85,8 +85,8 @@ nav ul li ul li {
 main {
     margin: 8px auto 0 !important;
     width: 99% !important;
-    height: 500px;
-    background: #282828 ;
+    height: 70%;
+    background: #282828;
     padding: 20px 0;
 }
 
