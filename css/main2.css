@@ -92,30 +92,68 @@ main {
 
 
 /*-----------------------------------------------------------------*/
-.doc-selector-navbar > .fa {
-
-    padding-left: 30% !important;
+.doc-navbar > .fa {
+    
 }
-.doc-selector-item > .fa:active {
+.doc-navbar > .fa:active {
 
 }
 
 
 .fa-angle-double-up {
-    padding-left: 35% !important;
 }
-.fa-angle-down {
-    padding-left: 35% !important;
+.fa-angle-double-down {
+    padding-left: 60% !important;
 }
 
+
 /*-----------------------------------------------------------------*/
-main .doc-selector-navbar-container {
-    position: fixed;
+
+/* Menu activation */
+#drop_button {
+    width: 50px;
+    height: 30px;
+    display: block !important;
+    border: none;
+    cursor: pointer;
+    background: none;
+    cursor: pointer;
+    clear: left;
+    font-size: 25px;
+    background: #b37759;
+    border-radius: 8px;
+    margin: 8px;
+}
+#drop_button:focus {
+
+}
+
+#drop_button[class~="active"]:hover {
+    border-radius: 0;
+    background-color: #000000;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+#drop_button:not(.active):hover {
+    border-radius: 8px;
+    background: #DC4A3D;
+    
+}
+#drop_button:hover,#drop_button:active .fa {
+    color: wheat!important;
+}
+
+/* Dropdown menu container */
+.doc-navbar-container {
+    position: relative;
+    display: inline-block;
     width: 350px;
     height: 400px;
 }
-.doc-selector-navbar-container .doc-selector-navbar {
-    position: fixed;
+/* Base extended menu with options */
+.doc-navbar {
+    width: 50px;
+    position: absolute;
     margin: 8px;
     padding: 0;
     border: 2px wheat;
@@ -125,54 +163,51 @@ main .doc-selector-navbar-container {
     list-style: none;
 }
 
-#docs-selector {
-    width: 100%;
-    height: 30px;
-    cursor: pointer;
-    float: left;
-    font-size: 25px;
-}
-
-
-.doc-selector-item {
-
-}
-
-
-.doc-selector-item-switch {
+/* 
+.docs-select-item {
+    
+    display: block;
     width: 50px;
     height: 30px;
+    
+    float: left;
+    clear: left;
+ }
+ */
+
+/*  */
+.docs-select-item {
+    /* display: none; */
+    display: none;
+    cursor: pointer;
+    font-size: 25px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    background: #DC4A3D;
 }
 
-.doc-selector-item-switch i {
+.docs-select-item i {
     float: left;
     padding: 5px 14px;
     font-size: 20px;
 }
-.doc-selector-item-switch span {
+.docs-select-item span {
     display: none;
     float: left;
     padding: 0 10px;
     font-size: 20px;
 }
 
-.doc-selector-item-switch .active a {
+/* Display toggle */
+.active {
     display: block;
-    position: fixed;
-    background: #DC4A3D;;
-    border-radius: 8px;
-    width: inherit;
-    height: 30px;
-    margin: 0 0 20px 0;
 }
-
-.doc-selector-item-switch:not(.active) {
+/* .docs-select-item:not(.active) {
     background: none;
 }
-.doc-selector-item-switch .active a span {
+.docs-select-item .active a span {
     display: block;
-}
-.doc-selector-item-switch:active i {}
+} */
 
 .doc-selector-item:hover, .doc-selector-item:active {
     w3-animate-left: 300px;

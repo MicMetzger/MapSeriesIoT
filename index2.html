@@ -9,18 +9,12 @@
     <meta content="-1" http-equiv="Expires"/>
 </head>
 <body>
-<script type="text/javascript" src="javascript/main.js"></script>
+<script src="main.js" type="text/javascript"></script>
 <!--Template by The_Fiddler-->
 <!--https://codepen.io/The_Fiddler-->
 
 <script>
-    $('doc-selector-item-switch').click(function(){
 
-        $(this).addClass('active')
-            .siblings()
-            .removeClass('active');
-
-    });
 </script>
 <div id="wrapper">
     <header>
@@ -51,35 +45,32 @@
         </ul>
     </nav>
     <main>
-        <div class="doc-selector-navbar-container">
-            <ul class="doc-selector-navbar">
-                <li class="opener_" id="docs-selector">
-                    <a href="#">
-                        <i class="fa fa-angle-double-up"></i>
-                    </a>
-                </li>
-                <li class="doc-selector-item-switch">
+        <div class="doc-navbar-container">
+            <button class="off" id="drop_button" onclick="activate_navbar(this.class);"><i
+                    class="fa fa-angle-double-up"></i></button>
+            <ul class="doc-navbar" id="Sidebar-Dropdown">
+                <li class="docs-select-item">
                     <a href="#">
                         <i class="fa fa-area-chart"></i>
-                        <span class="doc-selector-item-switch-title">Statistics</span>
+                        <span class="doc-item-title">Statistics</span>
                     </a>
                 </li>
-                <li class="doc-selector-item-switch">
+                <li class="docs-select-item">
                     <a href="#">
                         <i class="fa fa-area-chart"></i>
-                        <span class="doc-selector-item-switch-title">Statistics</span>
+                        <span class="doc-item-title">Statistics</span>
                     </a>
                 </li>
-                <li class="doc-selector-item-switch">
+                <li class="docs-select-item">
                     <a href="#">
                         <i class="fa fa-area-chart"></i>
-                        <span class="doc-selector-item-switch-title">Statistics</span>
+                        <span class="doc-item-title">Statistics</span>
                     </a>
                 </li>
-                <li class="doc-selector-item-switch">
+                <li class="docs-select-item">
                     <a href="#">
                         <i class="fa fa-area-chart"></i>
-                        <span class="doc-selector-item-switch-title">Statistics</span>
+                        <span class="doc-item-title">Statistics</span>
                     </a>
                 </li>
             </ul>
