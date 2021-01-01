@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "type": "browser-preview",
             "name": "Browser Preview: Attach",
@@ -13,7 +14,7 @@
             "type": "browser-preview",
             "request": "launch",
             "name": "Browser Preview: Launch",
-            "url": "http://localhost:3000/index2.html"
+            "url": "http://localhost:12199/index2.html"
         }
     ]
 }
