@@ -90,6 +90,27 @@ main {
 
 
 /*-----------------------------------------------------------------*/
+/* Screen Resizing */
+
+@media only screen and (max-width : 480px) {
+    nav ul li ul li {
+        display: block;
+        padding: 12px 10px 12px;
+    }
+    nav ul li {
+        padding: 15px 10px;
+    }
+    nav {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width : 860px){
+  
+}
+
+
+/*-----------------------------------------------------------------*/
 /* .doc-navbar > .fa {
     
 }
