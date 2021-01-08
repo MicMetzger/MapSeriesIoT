@@ -197,13 +197,39 @@ main {
 
 /*  */
 .docs-select-item {
-    /* display: none; */
-    display: none;
+    display: block;
     cursor: pointer;
     font-size: 25px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     background: #DC4A3D;
+    border-bottom: black 1px;
+}
+
+/*  */
+.docs-select-item:active {
+    width: 165px !important;
+}
+
+/*  */
+.docs-select-item > a > .fa:hover {
+    overflow: hidden;
+    background-color: #DC4A3D;
+    border: black 2px !important;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    width: 165px !important;
+}
+.docs-select-item:first-child .fa:hover  {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.docs-select-item:last-child .fa:hover  {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+/*  */
+.docs-select-item > a > .fa:hover+span:first-of-type {
 }
 
 .docs-select-item i {
@@ -213,14 +239,18 @@ main {
 }
 .docs-select-item span {
     display: none;
-    float: left;
     padding: 0 10px;
     font-size: 20px;
 }
 
+
+/*  */
+.inactive {
+    display: none !important;
+}
 /* Display toggle */
 .active {
-    display: block;
+    display: block !important;
 }
 /* .docs-select-item:not(.active) {
     background: none;
